@@ -1,0 +1,4 @@
+[submodule "themes/zola-tailwind"]
+	path = themes/zola-tailwind
+	url = git@github.com:tchartron/zola-tailwind.git
+	branch = main

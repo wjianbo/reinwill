@@ -55,7 +55,13 @@ hard_link_static = false
 #       {name = "authors"}, # Basic definition: no feed or pagination
 #     ]
 #
-taxonomies = []
+# taxonomies = []
+taxonomies = [
+    {name = "tags", paginate_by = 5, feed = true, lang = "en"},
+    {name = "categories", paginate_by = 5, feed = true, lang = "en"},
+    {name = "tags", paginate_by = 5, feed = true, lang = "fr"},
+    {name = "categories", paginate_by = 5, feed = true, lang = "fr"},
+]
 
 # When set to "true", a search index is built from the pages and section
 # content for `default_language`.

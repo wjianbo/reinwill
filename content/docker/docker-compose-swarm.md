@@ -1,7 +1,8 @@
 +++
-title = "My first post"
+title = "Docker swarm"
 date = 2021-11-04
 [taxonomies]
+categories=["it"]
 tags=["docker", "swarm", "docker-compose", "compose"]
 +++
 

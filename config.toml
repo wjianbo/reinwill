@@ -167,3 +167,10 @@ zt.navbar_title = "tchartron"
 [extra.index]
 title = "Thomas Chartron"
 image = "/img/tchartron.png"
+
+[extra.social]
+github = "https://github.com/tchartron"
+gitlab = "https://gitlab.com/tchartron"
+twitter = "https://twitter.com/tchartron"
+linkedin = "https://www.linkedin.com/in/thomas-chartron-b25718133/"
+email = "thomas.chartron@gmail.com"

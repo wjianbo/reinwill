@@ -168,6 +168,10 @@ zt.navbar_title = "tchartron"
 title = "Thomas Chartron"
 image = "/img/tchartron.png"
 
+[extra.default_author]
+name = "Thomas Chartron"
+avatar = "/img/tchartron.png"
+
 [extra.social]
 github = "https://github.com/tchartron"
 gitlab = "https://gitlab.com/tchartron"

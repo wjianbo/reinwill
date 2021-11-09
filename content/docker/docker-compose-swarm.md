@@ -5,6 +5,9 @@ date = 2021-11-04
 [taxonomies]
 categories=["it"]
 tags=["docker", "swarm", "docker-compose", "compose"]
+[extra]
+author = "Joachim maggle"
+avatar = "/img/tchartron.png"
 +++
 
 ## Create a docker swarm cluster using a docker-compose file and traefik reverse proxy

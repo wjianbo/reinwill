@@ -163,6 +163,8 @@ include_content = true
 #
 [extra]
 zt.navbar_title = "tchartron"
+zt.enable_adsense = true
+zt.adsense_link = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9725912603584408"
 
 [extra.index]
 title = "Thomas Chartron"

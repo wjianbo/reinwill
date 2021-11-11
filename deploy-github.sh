@@ -5,14 +5,18 @@ set -e
 
 if [ -d "public" ]
 then
-    printf "\033[0;32mRemoving public folder except .git and README.md and CNAME \033[0m\n"
+    echo -e "\033[0;32mRemoving public folder except .git and README.md and CNAME \033[0m\n"
     cd public
     find . -not -name '.git' -not -name 'README.md' -not -name 'CNAME' -delete
     cd ..
 fi
 
-printf "\033[0;32mDeploying updates to GitHub pages...\033[0m\n"
+echo -e "\033[0;32mCommit change to main repository\033[0m\n"
+git add .
+git commit -m "update"
+git push origin main
 
+echo -e "\033[0;32mDeploying updates to GitHub pages repository\033[0m\n"
 # Build the project to another directory because zola will delete the submodule /public otherwise
 zola build --output-dir public_zola
 #Now copy built files to public directory

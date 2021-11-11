@@ -13,10 +13,11 @@ fi
 
 printf "\033[0;32mDeploying updates to GitHub pages...\033[0m\n"
 
-# Build the project.
+# Build the project to another directory because zola will delete the submodule /public otherwise
 zola build --output-dir public_zola
-
-cp public_zola/* public/
+#Now copy built files to public directory
+cp -a public_zola/* public/
+rm -rf public_zola
 
 # Go To Public folder
 cd public

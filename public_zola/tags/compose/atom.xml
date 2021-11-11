@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title> - compose</title>
+	<link href="https://tchartron.github.io/tags/compose/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://tchartron.github.io"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2021-11-04T00:00:00+00:00</updated>
+	<id>https://tchartron.github.io/tags/compose/atom.xml</id>
+	<entry xml:lang="en">
+		<title>Docker swarm</title>
+		<published>2021-11-04T00:00:00+00:00</published>
+		<updated>2021-11-04T00:00:00+00:00</updated>
+		<link href="https://tchartron.github.io/docker/docker-compose-swarm/" type="text/html"/>
+		<id>https://tchartron.github.io/docker/docker-compose-swarm/</id>
+		<content type="html">&lt;h2 id=&quot;create-a-docker-swarm-cluster-using-a-docker-compose-file-and-traefik-reverse-proxy&quot;&gt;Create a docker swarm cluster using a docker-compose file and traefik reverse proxy&lt;&#x2F;h2&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;Example git repository for compose project used :&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;shell&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-shell &quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span&gt;# install docker on all machines (i use a single node for now)
+&lt;&#x2F;span&gt;&lt;span&gt;# using debian
+&lt;&#x2F;span&gt;&lt;span&gt;sudo apt-get remove docker docker-engine docker.io containerd runc
+&lt;&#x2F;span&gt;&lt;span&gt;sudo apt-get update
+&lt;&#x2F;span&gt;&lt;span&gt;sudo apt-get install \
+&lt;&#x2F;span&gt;&lt;span&gt;    apt-transport-https \
+&lt;&#x2F;span&gt;&lt;span&gt;    ca-certificates \
+&lt;&#x2F;span&gt;&lt;span&gt;    curl \
+&lt;&#x2F;span&gt;&lt;span&gt;    gnupg \
+&lt;&#x2F;span&gt;&lt;span&gt;    lsb-release
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;curl -fsSL https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;debian&#x2F;gpg | sudo gpg --dearmor -o &#x2F;usr&#x2F;share&#x2F;keyrings&#x2F;docker-archive-keyring.gpg
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;echo \
+&lt;&#x2F;span&gt;&lt;span&gt;  &amp;quot;deb [arch=$(dpkg --print-architecture) signed-by=&#x2F;usr&#x2F;share&#x2F;keyrings&#x2F;docker-archive-keyring.gpg] https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;debian \
+&lt;&#x2F;span&gt;&lt;span&gt;  $(lsb_release -cs) stable&amp;quot; | sudo tee &#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;docker.list &amp;gt; &#x2F;dev&#x2F;null
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;sudo apt-get update
+&lt;&#x2F;span&gt;&lt;span&gt;sudo apt-get install docker-ce docker-ce-cli containerd.io
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;# Add non root user to docker group to allow him to run docker
+&lt;&#x2F;span&gt;&lt;span&gt;sudo groupadd docker
+&lt;&#x2F;span&gt;&lt;span&gt;sudo usermod -aG docker $USER
+&lt;&#x2F;span&gt;&lt;span&gt;# Start on boot
+&lt;&#x2F;span&gt;&lt;span&gt;sudo systemctl enable docker.service
+&lt;&#x2F;span&gt;&lt;span&gt;sudo systemctl enable containerd.service
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;# Use an image registry
+&lt;&#x2F;span&gt;&lt;span&gt;# Create gitlab access token with write_registry and read_registry
+&lt;&#x2F;span&gt;&lt;span&gt;# Login to registry
+&lt;&#x2F;span&gt;&lt;span&gt;docker login registry.gitlab.com -u tchartron -p s8uk4JC3c4pfRMVFGF28
+&lt;&#x2F;span&gt;&lt;span&gt;# Build images
+&lt;&#x2F;span&gt;&lt;span&gt;docker compose -f docker-compose.swarm.yml build [--no-cache]
+&lt;&#x2F;span&gt;&lt;span&gt;# Push images
+&lt;&#x2F;span&gt;&lt;span&gt;docker push registry.gitlab.com&#x2F;atoi2jouer&#x2F;web&#x2F;at2j-php:0.1
+&lt;&#x2F;span&gt;&lt;span&gt;docker push registry.gitlab.com&#x2F;atoi2jouer&#x2F;web&#x2F;at2j-mysql:0.1
+&lt;&#x2F;span&gt;&lt;span&gt;docker push registry.gitlab.com&#x2F;atoi2jouer&#x2F;web&#x2F;at2j-nginx:0.1
+&lt;&#x2F;span&gt;&lt;span&gt;docker push registry.gitlab.com&#x2F;atoi2jouer&#x2F;web&#x2F;at2j-mercure:0.1
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;# Initialize the swarm on the manager node
+&lt;&#x2F;span&gt;&lt;span&gt;docker swarm init
+&lt;&#x2F;span&gt;&lt;span&gt;# Add workers eventually
+&lt;&#x2F;span&gt;&lt;span&gt;# Create overlay network
+&lt;&#x2F;span&gt;&lt;span&gt;docker network create -d overlay at2j_overlay
+&lt;&#x2F;span&gt;&lt;span&gt;# Get nodes
+&lt;&#x2F;span&gt;&lt;span&gt;docker node ls
+&lt;&#x2F;span&gt;&lt;span&gt;# Add label to match defined placement constraint (from docker-compose file) for mysql container as it is pinned to a specific host
+&lt;&#x2F;span&gt;&lt;span&gt;docker node update --label-add hostname=manager_1 vmroytpjhydkmnrl4nj4levtg
+&lt;&#x2F;span&gt;&lt;span&gt;# Deploy the stack
+&lt;&#x2F;span&gt;&lt;span&gt;docker stack deploy --with-registry-auth --compose-file docker-compose.swarm.yml at2j
+&lt;&#x2F;span&gt;&lt;span&gt;# Deploy the stack with preprocessing to interpolate env vars !
+&lt;&#x2F;span&gt;&lt;span&gt;(echo -e &amp;quot;version: &amp;#39;3.8&amp;#39;\n&amp;quot;;  docker compose -f docker-compose.swarm.yml config) | docker stack deploy --with-registry-auth --compose-file - at2j
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;#Test to see if it&amp;#39;s loadbalanced and other behaviors
+&lt;&#x2F;span&gt;&lt;span&gt;#Test scaling php
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;troubleshooting-and-useful-commands&quot;&gt;Troubleshooting and useful commands&lt;&#x2F;h2&gt;
+&lt;pre data-lang=&quot;shell&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-shell &quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span&gt;#Find why container does not start
+&lt;&#x2F;span&gt;&lt;span&gt;docker service ps --no-trunc at2j_mysql
+&lt;&#x2F;span&gt;&lt;span&gt;#OR if on linux (above command does not show every errors)
+&lt;&#x2F;span&gt;&lt;span&gt;journalctl -u docker.service | tail -n 50
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;#Logs of running service
+&lt;&#x2F;span&gt;&lt;span&gt;docker service logs at2j_traefik -f
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;#Leave the swarm and destroy it&amp;#39;s services and containers
+&lt;&#x2F;span&gt;&lt;span&gt;docker swarm leave --force
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;#This explains how to communicate to service with hostname
+&lt;&#x2F;span&gt;&lt;span&gt;https:&#x2F;&#x2F;stackoverflow.com&#x2F;questions&#x2F;55039198&#x2F;docker-swarm-how-to-communicate-to-other-services-through-their-hostname-only
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>Docker Compose</title>
+		<published>2021-11-04T00:00:00+00:00</published>
+		<updated>2021-11-04T00:00:00+00:00</updated>
+		<link href="https://tchartron.github.io/docker/docker-compose/" type="text/html"/>
+		<id>https://tchartron.github.io/docker/docker-compose/</id>
+		<content type="html"></content>
+	</entry>
+</feed>

@@ -1,6 +1,6 @@
 +++
-title = "Php"
-description = "Php related posts"
+title = "Zola"
+description = "Zola related posts"
 template = "section.html"
 page_template = "page.html"
 sort_by = "date" 

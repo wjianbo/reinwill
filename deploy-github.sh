@@ -26,6 +26,7 @@ git push origin main
 # Go To Public folder
 cd public
 
+git checkout main
 # Add changes to git.
 git add .
 

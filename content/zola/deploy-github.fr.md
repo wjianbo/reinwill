@@ -64,12 +64,13 @@ rm -rf public_zola
 
 echo -e "\033[0;32mCommit change to main repository\033[0m\n"
 git add .
-git commit -m "update"
+git commit -am "update"
 git push origin main
 
 # Go To Public folder
 cd public
 
+git checkout main
 # Add changes to git.
 git add .
 

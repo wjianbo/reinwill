@@ -167,6 +167,18 @@ zt.enable_adsense = true
 zt.enable_multilingue = true
 zt.adsense_link = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9725912603584408"
 
+[extra.lang]
+items = [
+    { lang = "en", links = [
+        { base_url = "/", name = "English" },
+        { base_url = "/fr", name = "French" },
+    ] },
+    { lang = "fr", links = [
+        { base_url = "/", name = "Anglais" },
+        { base_url = "/fr", name = "Français" },
+    ] },
+]
+
 [extra.navbar]
 items = [
     { lang = "en", links = [
@@ -201,6 +213,9 @@ items = [
 [extra.index]
 title = "Thomas Chartron"
 image = "/img/tchartron.png"
+
+[extra.404]
+image = "/img/404.jpg"
 
 [extra.default_author]
 name = "Thomas Chartron"

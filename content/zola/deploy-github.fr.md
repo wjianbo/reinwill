@@ -63,9 +63,9 @@ cp -a public_zola/* public/
 rm -rf public_zola
 
 echo -e "\033[0;32mCommit change to main repository\033[0m\n"
-# git add .
-# git commit -am "update"
-# git push origin main
+git add .
+git commit -am "update"
+git push origin main
 
 # Go To Public folder
 cd public

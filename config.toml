@@ -192,7 +192,7 @@ items = [
         { url = "/fr/tags", name = "Tags" },
     ] },
 ]
-title = "title"
+title = "tchartron"
 
 [extra.sidebar]
 items = [

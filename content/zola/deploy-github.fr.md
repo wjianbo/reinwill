@@ -8,7 +8,7 @@ tags=["github", "zola"]
 [extra]
 toc = true
 [extra.author]
-name = "Joachim maggle"
+name = "Thomas Chartron"
 avatar = "/img/tchartron.png"
 +++
 

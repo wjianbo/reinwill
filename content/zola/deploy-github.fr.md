@@ -59,7 +59,7 @@ echo -e "\033[0;32mDeploying updates to GitHub pages repository\033[0m\n"
 # Build the project to another directory because zola will delete the submodule /public otherwise
 zola build --output-dir public_zola
 #Now copy built files to public directory
-cp -a public_zola/* public/
+cp -a public_zola/ public/
 rm -rf public_zola
 
 echo -e "\033[0;32mCommit change to main repository\033[0m\n"
@@ -101,7 +101,7 @@ If a submodule was previously added and throws an error like : "A git directory 
 ```bash
 rm -rf public
 # Delete the relevant lines from the .gitmodules
-git rm --cached public
+git rm -r --cached public
 rm -rf .git/modules/public
 # Then re add the submodule
 git submodule add -b main git@github.com:<username>/<username>.github.io.git public

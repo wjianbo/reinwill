@@ -176,28 +176,28 @@ zt.adsense_link = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.j
 items = [
     { lang = "en", links = [
         { base_url = "/", name = "English" },
-        { base_url = "/fr", name = "French" },
+        { base_url = "/fr", name = "French" }
     ] },
     { lang = "fr", links = [
         { base_url = "/", name = "Anglais" },
-        { base_url = "/fr", name = "Français" },
-    ] },
+        { base_url = "/fr", name = "Français" }
+    ] }
 ]
 
 [extra.navbar]
+title = "tchartron"
 items = [
     { lang = "en", links = [
         { url = "/", name = "Home" },
         { url = "/categories", name = "Categories" },
-        { url = "/tags", name = "Tags" },
+        { url = "/tags", name = "Tags" }
     ] },
     { lang = "fr", links = [
         { url = "/fr", name = "Accueil" },
         { url = "/fr/categories", name = "Categories" },
-        { url = "/fr/tags", name = "Tags" },
-    ] },
+        { url = "/fr/tags", name = "Tags" }
+    ] }
 ]
-title = "tchartron"
 
 [extra.sidebar]
 items = [
@@ -205,14 +205,14 @@ items = [
         { url = "/php", name = "Php" },
         { url = "/blog", name = "Blog" },
         { url = "/docker", name = "Docker" },
-        { url = "/zola", name = "Zola" },
+        { url = "/zola", name = "Zola" }
     ] },
     { lang = "fr", links = [
         { url = "/fr/php", name = "Php" },
         { url = "/fr/blog", name = "Blog" },
         { url = "/fr/docker", name = "Docker" },
-        { url = "/fr/zola", name = "Zola" },
-    ] },
+        { url = "/fr/zola", name = "Zola" }
+    ] }
 ]
 
 [extra.index]

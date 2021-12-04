@@ -4,4 +4,4 @@ description = "Thomas Chartron's blog"
 date = 2021-11-04
 +++
 
-Web developper
+A Zola theme built with tailwindcss

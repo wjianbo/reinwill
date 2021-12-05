@@ -1,8 +1,8 @@
-[submodule "public"]
-	path = public
-	url = git@github.com:tchartron/tchartron.github.io.git
-	branch = main
 [submodule "themes/blow"]
 	path = themes/blow
 	url = git@github.com:tchartron/blow.git
+	branch = main
+[submodule "public"]
+	path = public
+	url = git@github.com:tchartron/tchartron.github.io.git
 	branch = main

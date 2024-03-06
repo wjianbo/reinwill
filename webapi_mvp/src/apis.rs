@@ -25,6 +25,19 @@ async fn get_technologiy_page(
     HttpResponse::Ok().json(tech)
 }
 
+#[get("/menu_items")]
+async fn get_menu_items() -> impl Responder {
+    
+    // DBへアクセスして技術ページに表示する情報を取得する
+    let conn = db_connector::create_connection();
+    let menu_items = match db_connector::get_menu_items(&conn) {
+        Ok(result) => result,
+        Err(_) => return HttpResponse::NotFound().finish()
+    };
+
+    HttpResponse::Ok().json(menu_items)
+}
+
 #[post("/technologies")]
 async fn post_technologiy_page(
         tech: web::Json<Technology>) -> impl Responder {
@@ -42,6 +55,7 @@ pub async fn create_app(addr: &str, port: u16) -> std::io::Result<()> {
         App::new()
             .service(hello)
             .service(get_technologiy_page)
+            .service(get_menu_items)
             .service(post_technologiy_page)
     })
     .bind((addr, port))?

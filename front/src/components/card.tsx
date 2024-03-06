@@ -1,8 +1,12 @@
 import Typography from '@mui/material/Typography';
-import { ButtonGroup, Divider } from '@mui/material';
+import { Button, ButtonGroup, Divider } from '@mui/material';
 import SimpleListMenu from './menu';
 
-export default function ImgMediaCard() {
+export default function ImgMediaCard(menuData: Menu) {
+
+  function handleClick(_event: any, item: Command): void {
+    console.log(item)
+  }
 
   return (
     <>
@@ -13,14 +17,19 @@ export default function ImgMediaCard() {
         },
       }}>
         <Typography gutterBottom variant="h6" component="div">
-          文脉
+          {menuData.label}
         </Typography>
       </Divider>
       <ButtonGroup variant='text'>
-        <SimpleListMenu />
-        <SimpleListMenu />
-        <SimpleListMenu />
-        <SimpleListMenu />
+        {
+          menuData.children.map((element) => (element.type === 'menu' ?
+            <SimpleListMenu label={element.label} children={(element as Menu).children} type={'menu'} /> : <>
+              <Button
+                onClick={(event) => handleClick(event, element)}
+              >{element.label}</Button>
+            </>)
+          )
+        }
       </ButtonGroup>
     </>
   );

@@ -3,14 +3,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import Button from '@mui/material/Button';
 
-const options = [
-  '玄',
-  '经',
-  '子',
-  '易',
-];
-
-export default function SimpleListMenu() {
+export default function SimpleListMenu(item: Menu) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [selectedIndex, setSelectedIndex] = React.useState(1);
   const open = Boolean(anchorEl);
@@ -19,7 +12,7 @@ export default function SimpleListMenu() {
   };
 
   const handleMenuItemClick = (
-    event: React.MouseEvent<HTMLElement>,
+    _event: React.MouseEvent<HTMLElement>,
     index: number,
   ) => {
     setSelectedIndex(index);
@@ -40,7 +33,7 @@ export default function SimpleListMenu() {
         onClick={handleClickListItem}
         variant='text'
       >
-        文化
+        {item.label}
       </Button>
       <Menu
         id="lock-menu"
@@ -52,15 +45,15 @@ export default function SimpleListMenu() {
           role: 'listbox',
         }}
       >
-        {options.map((option, index) => (
+        {item.type === 'menu' ? item.children.map((option, index) => (
           <MenuItem
-            key={option}
+            key={index}
             selected={index === selectedIndex}
             onClick={(event) => handleMenuItemClick(event, index)}
           >
-            {option}
+            {option.label}
           </MenuItem>
-        ))}
+        )) : (<></>)}
       </Menu>
     </>
   );

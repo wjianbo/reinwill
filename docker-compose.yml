@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  postgres:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: reinwill
+      POSTGRES_PASSWORD: passw0rd
+      PGPASSWORD: passw0rd
+      POSTGRES_DB: reinwill_db
+      TZ: "Asia/Tokyo"
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres:/var/lib/postgresql/data
+
+volumes:
+  postgres:

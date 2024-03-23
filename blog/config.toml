@@ -1,0 +1,115 @@
+# The URL the site will be built for
+base_url = "https://example.com"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = false
+
+theme = "zplit"
+
+[markdown]
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+highlight_code = false
+
+[extra]
+# Put all your custom variables here
+# The max-width of the page content
+grid_size = "grid-lg"
+
+# Whether to enable KaTeX or not
+katex = true
+
+# Default author for articles
+author = "reinwill"
+
+show_author = true
+show_tags = true
+show_categories = true
+read_more_prompt = "read more"
+read_post_prompt = "read post"
+
+# Menu
+logo_image = "./logo.svg"
+
+hamburger_menu = true
+
+# Menu items to display. You define a url and the name of the menu item.
+# NOTE: `$BASE_URL/` must be included in the url name.
+main_menu = [
+              {url="/tags/", name="tags"},
+              {url="/categories/", name="categories"},
+              {url="/about", name="about"},
+]
+
+# Footer
+
+# footer_tagline = "Your tagline"
+
+# Social media buttons to display. You define a url and the name of the platform.
+social_links = [
+    {url = "https://t.me/zwitterio", name = "telegram"},
+    {url = "https://twitter.com/gicrisf", name = "twitter"},
+    {url = "https://github.com/gicrisf", name = "github"},
+    # {url = "", name = "instagram"},
+    # {url = "", name = "facebook"},
+    # {url = "", name = "bookstack"},
+    # {url = "", name = "dokuwiki"},
+]
+
+
+
+[extra.sidebar]
+# Enable/Disable sidebar
+active=true
+
+# Include a text snippet in the sidebar
+# You can format it with HTML
+text_snippet="Some <strong>HTML</strong> here! It's <mark>safe</mark>!"
+
+# Author card
+author_bio = "Ciao, sono io, l'author bio"
+author_avatar = "avatar.png"
+
+# Include search bar
+# TODO template
+
+# Embed twitter iframe in the sidebar
+tweets_by="gicrisf"
+
+popular_tags=false
+archive=true
+related_posts=false #TODO
+
+[extra.lists]
+
+connect = [
+    { url = "/blog", text="Blog", new_tab = true },
+    { url = "#", text="Email", new_tab = false },
+    { url = "#", text="Newsletter", new_tab = false },
+]
+
+social = [
+    {url = "https://t.me/zwitterio", text = "Telegram"},
+    {url = "https://twitter.com/gicrisf", text = "Twitter"},
+    {url = "https://github.com/gicrisf", text = "Github"},
+]
+
+culture = [
+    {url = "https://github.com/gicrisf", text = "Github"},
+]
+
+menu_groups = [
+    { text = "A", children = [
+        {url = "https://t.me/zwitterio", text = "Telegram"},
+        {url = "https://twitter.com/gicrisf", text = "Twitter"},
+        {url = "https://github.com/gicrisf", text = "Github"},
+    ]},
+    { text = "A", children = [
+        {url = "https://t.me/zwitterio", text = "Telegram"},
+        {url = "https://twitter.com/gicrisf", text = "Twitter"},
+        {url = "https://github.com/gicrisf", text = "Github"},
+    ]},
+]

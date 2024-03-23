@@ -1,0 +1,14 @@
+{% macro connect() %}
+{% for group in config.extra.lists.menu_groups %}
+<div class="split-list">
+    <h3>{{group.text}}</h3>
+    <ul>
+        {% for item in group.children %}
+        <li>
+            <a href="{{ item.url }}">{{ item.text }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endfor %}
+{% endmacro connect %}

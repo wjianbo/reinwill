@@ -1,0 +1,61 @@
+{% macro render(page) %}
+{% if page.taxonomies.books %}
+{{header::render(text="典籍")}}
+{% set items = page.taxonomies.books | default(value=[]) %}
+{% for item_slug in items %}
+{% set item = get_page(path="books/"~item_slug~"/index.md") %}
+<a class="text-decoration-none text-reset" href="{{get_taxonomy_url(kind=" books", name=item_slug)}}"
+  title="{{item.title}}">{{item.title}}</a>{% if not loop.last %}, {% endif %}
+{% endfor %}
+{% endif %}
+<div class="space-y-4 w-full">
+{% if page.extra.books %}
+<div
+  class="border border-2 border-gray-200 dark:border-black rounded-xl p-5 shadow-2xl bg-gray-200 dark:bg-gray-800 sticky top-12 w-full">
+  <p class="text-bold text-xl">典籍</p>
+  <ul id="books">
+    {% for book_name in page.extra.books %}
+    {% set book_page = get_page(path="books/"~book_name~".md") %}
+    <li class="pl-2 my-2">
+      <a class="text-md block rounded-lg p-2" href="{{ book_page.permalink | safe }}">
+        - {{ book_name }}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+{% if page.extra.persons %}
+<div
+  class="border border-2 border-gray-200 dark:border-black rounded-xl p-5 shadow-2xl bg-gray-200 dark:bg-gray-800 sticky top-12 w-full">
+  <p class="text-bold text-xl">人物</p>
+  <ul id="persons">
+    {% for person_name in page.extra.persons %}
+    {% set person_page = get_page(path="persons/"~person_name~".md") %}
+    <li class="pl-2 my-2">
+      <a class="text-md block rounded-lg p-2" href="{{ person_page.permalink | safe }}">
+        - {{ person_name }}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+{% if page.extra.events %}
+<div
+  class="border border-2 border-gray-200 dark:border-black rounded-xl p-5 shadow-2xl bg-gray-200 dark:bg-gray-800 sticky top-12 w-full">
+  <p class="text-bold text-xl">事件</p>
+  <ul id="events">
+    {% for event_name in page.extra.events %}
+    {% set event_page = get_page(path="events/"~event_name~".md") %}
+    <li class="pl-2 my-2">
+      <a class="text-md block rounded-lg p-2" href="{{ event_page.permalink | safe }}">
+        - {{ event_name }}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+</div>
+{% endmacro %}
